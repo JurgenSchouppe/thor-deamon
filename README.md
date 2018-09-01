@@ -35,9 +35,23 @@ GOPATH=/usr/local/thor
 PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 THORARGS="--network test"
 ```
-Do not forget to add the --api-addr 0.0.0.0:8669 flag if you want other containers and/or hosts to have access to the RESTful API. Thorbinds to localhost by default and it will not accept requests outside the container itself without the flag.
+Do not forget to add the --api-addr 0.0.0.0:8669 flag if you want other containers and/or hosts to have access to the RESTful API. Thorbinds to localhost by default and it will not accept requests outside the container itself without the flag. Also you will need to set a list of domains from which to accept cross origini API requests.
 ```
-THORARGS="--network test" becomes THORARGS="--network test --api-addr 0.0.0.0:8669"
+THORARGS="--network test" becomes THORARGS="--network test --api-addr 0.0.0.0:8669 --api-cors $domain1,$domain2"
+```
+A list of other command line options can be found here.
+```
+--network value the network to join (main|test)
+--data-dir value directory for block-chain databases
+--beneficiary value address for block rewards
+--api-addr value API service listening address (default: "localhost:8669")
+--api-cors value comma separated list of domains from which to accept cross origin requests to API
+--verbosity value log verbosity (0-9) (default: 3)
+--max-peers value maximum number of P2P network peers (P2P network disabled if set to 0) (default: 25)
+--p2p-port value P2P network listening port (default: 11235)
+--nat value port mapping mechanism (any|none|upnp|pmp|extip:) (default: "none")
+--help, -h show help
+--version, -v print the version
 ```
 
 If you want to switch in between Vechain's main and test net, just change the thor arguments in the environ file.
