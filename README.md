@@ -34,6 +34,10 @@ GOROOT=/usr/local/go
 GOPATH=/usr/local/thor
 PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 THORARGS="--network test"
+
+Do not forget to add the --api-addr 0.0.0.0:8669 flag if you want other containers and/or hosts to have access to the RESTful API. Thorbinds to localhost by default and it will not accept requests outside the container itself without the flag.
+
+THORARGS="--network test" becomes THORARGS="--network test --api-addr 0.0.0.0:8669"
 ```
 
 If you want to switch in between Vechain's main and test net, just change the thor arguments in the environ file.
@@ -135,7 +139,7 @@ Jul 18 10:22:59 vthor-chain thor[5345]: t=2018-07-18T10:22:59+0000 lvl=info msg=
 ```
 
 ```
-systemctl status stop
+systemctl stop thor
 ```
 
 Stop the thor deamon 
@@ -159,7 +163,7 @@ Jul 18 10:30:15 vthor-chain thor[5780]: t=2018-07-18T10:30:15+0000 lvl=info msg=
 Jul 18 10:30:15 vthor-chain systemd[1]: Stopped Thor VeChain Daemon.
 ```
 ```
-systemctl status start
+systemctl start thor
 ```
 Start the thor deamon 
 ```
