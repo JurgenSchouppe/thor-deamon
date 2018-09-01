@@ -34,9 +34,9 @@ GOROOT=/usr/local/go
 GOPATH=/usr/local/thor
 PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 THORARGS="--network test"
-
+```
 Do not forget to add the --api-addr 0.0.0.0:8669 flag if you want other containers and/or hosts to have access to the RESTful API. Thorbinds to localhost by default and it will not accept requests outside the container itself without the flag.
-
+```
 THORARGS="--network test" becomes THORARGS="--network test --api-addr 0.0.0.0:8669"
 ```
 
